@@ -13,17 +13,7 @@ from .utils import create_email, check_email
 class Account:
     @staticmethod
     def create(logging: bool = False):
-        is_custom_domain = input(
-            "Do you want to use your custom domain name for temporary email? [Y/n]: "
-        ).upper()
-
-        if is_custom_domain == "Y":
-            mail_address = create_email(custom_domain=True, logging=logging)
-        elif is_custom_domain == "N":
-            mail_address = create_email(custom_domain=False, logging=logging)
-        else:
-            print("Please, enter either Y or N")
-            return
+        mail_address = create_email(custom_domain=False, logging=logging)
 
         name = string.ascii_lowercase + string.digits
         username = "".join(random.choice(name) for i in range(20))
